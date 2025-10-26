@@ -1,0 +1,35 @@
+import matplotlib.pyplot as plt
+n = 200
+delx = 1/n
+delt = 0.001
+gamma = 0.001
+con = delt/(delx*delx)
+u = [0]*int(n/4) + [100] + [0]*int(n/4) + [100] +[0]*int(n/2 -2)
+
+x = [ttk * delx for ttk in range(0, n)]
+t = float(input('enter time step where you want to see the heat distribution'))
+times = [0.001]
+n_steps = int(t/delt)
+for j in range (1,(n_steps)):
+    times.append(times[j-1]+delt)
+    
+
+
+
+for i in times:
+    for j in range (1,n-1):
+        u[j] = u[j] + (gamma*con*(u[j-1]-2*u[j]+u[j+1]))
+       
+
+
+plt.plot(x,u, marker='o')
+
+plt.show()
+                                 
+                                 
+        
+        
+
+
+
+
